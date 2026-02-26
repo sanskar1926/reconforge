@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.pdf
+alerts.json
+blocked_ips.log
+test_scanner.py
