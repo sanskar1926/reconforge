@@ -8,23 +8,18 @@ Built for ethical hackers, security researchers, and penetration testers.
 
 ---
 
-## Features
-
-- Fast Nmap-based port and service scanning
-- Live CVE lookup via NVD API (no API key needed)
-- Beautiful Rich terminal UI with colored tables
-- Risk level assessment in summary
-- Lightweight — no bloat, no GUI, just terminal
+## Installation — One Time Setup
+```bash
+git clone https://github.com/sanskar1926/reconforge.git
+cd reconforge
+bash setup.sh
+```
 
 ---
 
-## Installation
+## Activate (Every New Terminal)
 ```bash
-git clone https://github.com/sanskar1926/reconforge
-cd reconforge
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+source venv/bin/activate && alias reconpy="sudo $(pwd)/venv/bin/python3"
 ```
 
 ---
@@ -32,10 +27,22 @@ pip install -r requirements.txt
 ## Usage
 ```bash
 # Basic scan
-python3 -m reconforge.cli scanme.nmap.org
+reconpy -m reconforge.cli scanme.nmap.org
 
 # Custom port range
-python3 -m reconforge.cli 192.168.1.105 --ports 1-65535
+reconpy -m reconforge.cli 192.168.1.1 --ports 1-500
+
+# DNS lookup
+reconpy -m reconforge.cli scanme.nmap.org --dns
+
+# OS detection
+reconpy -m reconforge.cli 192.168.1.1 --os
+
+# Weak credential check
+reconpy -m reconforge.cli 192.168.1.1 --brute
+
+# Full power — everything at once
+reconpy -m reconforge.cli 192.168.1.1 --ports 1-1000 --dns --os --brute
 ```
 
 ---
@@ -43,7 +50,7 @@ python3 -m reconforge.cli 192.168.1.105 --ports 1-65535
 ## Requirements
 
 - Python 3.8+
-- Nmap installed on system (`sudo apt install nmap`)
+- Nmap installed (`sudo apt install nmap`)
 - Root/sudo privileges for full scan accuracy
 
 ---
